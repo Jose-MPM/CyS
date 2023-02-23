@@ -150,7 +150,33 @@ Phone+354.4212434
 ---
 6. Obten una lista de palabras (mejor conocida como wordlist) de algún sitio o fuente confiable, con ella realiza un escaneo y encuentra la bandera oculta dentro de la aplicación HTTP en la práctica.
 
-Utilizando gobuster para realizar el escaneo de directorios obtuvimos:
+Utilizando Gobuster v2.0.1 para realizar el escaneo de directorios obtuvimos:
+
+
+| ![](img/unConnect.png)
+|:----------------------:|
+| No pude realizar la conección.
+
+
+| ![](img/error.png)
+|:----------------------:|
+| Supongo que estaba metiendo mal el servidor, porque cambiando la dirección a la proporcionada, funciono.
+
+| ![](img/resis.png)
+|:----------------------:|
+| Salida con  tras ejecutar: gobuster -e -u ec2-44-195-59-220.compute-1.amazonaws.com  -w /home/ntory/Downloads/wordlist.txt
+
+| ![](img/user.png)
+|:----------------------:|
+| Salida con  tras ejecutar: gobuster -e -u ec2-44-195-59-220.compute-1.amazonaws.com  -w /home/ntory/Downloads/wordlist.txt
+
+| ![](img/flag.png)
+|:----------------------:|
+| Bandera encontrada tras añadir la etiqueta de cada uno de los directorios!!!. 
+
+| ![](img/Dir.png)
+|:----------------------:|
+| (aunque tambien explorando el sitio pudimos encontrar directorios valiosos). 
 
 # Notes:
 * El augmento -p -10000 en nmap nos permite escanear los primeros 10000 puertos.
