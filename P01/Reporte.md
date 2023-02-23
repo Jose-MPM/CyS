@@ -143,8 +143,8 @@ Phone+354.4212434
 
 5. ¿Qué hacen los parámetros que se le pasaron a nmap?
 - -sV: Nos proporciona los servicios y versiones de los puertos encontrados.
-- -Pn:
-- -sT:
+- -Pn: Trata a los hosts como si fuera online.(skip host discovery)
+- -sT: Hace análisis de TCP SYN/Connect()/ACK/Window/Maimon
 - El augmento **-p -10000** en nmap nos permite escanear los primeros 10000 puertos.
 
 ---
