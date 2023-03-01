@@ -1,0 +1,6 @@
+Respuesta 1: 10.10.15.52
+Respuesta 2: http.request.method ==GET
+Respuesta 3:
+Respuesta 4: plaintext_password_fiasco
+Respuesta 5:
+Respuesta 6:
