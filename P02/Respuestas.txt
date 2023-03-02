@@ -1,6 +1,6 @@
 Respuesta 1: 10.11.3.2
 Respuesta 2: http.request.method ==GET
-Respuesta 3: HTTP/1.1 -- http://tbf.blog/
+Respuesta 3: http://tbf.blog/
 Respuesta 4: plaintext_password_fiasco
-Respuesta 5: SSH Protocol
-Respuesta 6:
+Respuesta 5: SSH
+Respuesta 6: Rubber ducky
