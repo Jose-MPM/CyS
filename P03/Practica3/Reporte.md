@@ -10,5 +10,9 @@ En esta práctica decidimos trabajarla de forma "individual" para que ambos ente
 flag{KarymeAzpeitia}
 ```
 
+```
+flag{JoseManuelKaryme}
+```
+
 ------
 📢⌨️ with ❤️ by [Jose-MPM](https://github.com/Jose-MPM) 😊⌨️ and [Kary-GOD](https://github.com/Kary-AG) 😊⌨️🎁
