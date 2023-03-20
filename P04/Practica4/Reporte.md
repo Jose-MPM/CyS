@@ -194,6 +194,7 @@ debug1: Next authentication method: password
 
 * Por lo que ahora atacaremos los 4 puertos que permiten realizar una conección by ssh.
 
+* Para realizar las listas de palabras con 9 caracteres filtre las wordlist encontradas en internet utilice este [colab](https://colab.research.google.com/drive/1hnuIa4-3IH76sHEHqztqiwj_ImMm-PUe?usp=sharing).
 ### Atacar al objetivo: 
 
 Obtener mediante un ataque de diccionario la contraseña correspondiente a su  usuario (utilizando Hydra por ejemplo).
