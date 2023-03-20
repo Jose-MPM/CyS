@@ -120,7 +120,48 @@ PORT     STATE SERVICE VERSION
 			- pasaste12
 			- bandera12
 			- BANDERASI
- 
+* Realizando otra ejecución de nmap obtuvimos:
+```bash
+ntory@debian11:~/CyS/p04$ nmap -sV -Pn -sT -p -25000 44.199.201.139
+Starting Nmap 7.80 ( https://nmap.org ) at 2023-03-20 00:01 CST
+Stats: 0:27:26 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
+Connect Scan Timing: About 57.51% done; ETC: 00:49 (0:20:14 remaining)
+Stats: 0:27:26 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
+Connect Scan Timing: About 57.52% done; ETC: 00:49 (0:20:14 remaining)
+Stats: 0:30:06 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
+Connect Scan Timing: About 62.82% done; ETC: 00:49 (0:17:48 remaining)
+Stats: 0:43:13 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
+Connect Scan Timing: About 90.06% done; ETC: 00:49 (0:04:46 remaining)
+Stats: 0:50:24 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
+Service scan Timing: About 66.67% done; ETC: 00:52 (0:00:52 remaining)
+Stats: 0:50:29 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
+Service scan Timing: About 66.67% done; ETC: 00:53 (0:00:54 remaining)
+Nmap scan report for ec2-44-199-201-139.compute-1.amazonaws.com (44.199.201.139)
+Host is up (0.087s latency).
+Not shown: 24994 filtered ports
+PORT      STATE SERVICE     VERSION
+2200/tcp  open  tcpwrapped
+2220/tcp  open  netiq?
+2222/tcp  open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+22022/tcp open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+22220/tcp open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+22222/tcp open  easyengine?
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port2220-TCP:V=7.80%I=7%D=3/20%Time=64180239%P=x86_64-pc-linux-gnu%r(Ge
+SF:nericLines,3,"b\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port22222-TCP:V=7.80%I=7%D=3/20%Time=64180239%P=x86_64-pc-linux-gnu%r(G
+SF:enericLines,B,"9\*oT9`U!t\r\n");
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 3084.25 seconds
+
+```
+
+
+
 ####  Uso del parámetro _-v_.
 
 * Ejecutando ssh con el párametro *_-v_* sobre uno de los puertos que nos permitían intentar realizar una conección rapido obtuvimos la siguiente información tras poder ingresar nuestra clave:
@@ -195,6 +236,7 @@ debug1: Next authentication method: password
 * Por lo que ahora atacaremos los 4 puertos que permiten realizar una conección by ssh.
 
 * Para realizar las listas de palabras con 9 caracteres filtre las wordlist encontradas en internet utilice este [colab](https://colab.research.google.com/drive/1hnuIa4-3IH76sHEHqztqiwj_ImMm-PUe?usp=sharing).
+
 ### Atacar al objetivo: 
 
 Obtener mediante un ataque de diccionario la contraseña correspondiente a su  usuario (utilizando Hydra por ejemplo).
