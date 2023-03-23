@@ -16,7 +16,7 @@ nmap 44.199.201.139 -sV -Pn -sT
 
 | ![](img/nmapOut.png)
 |:----------------------:|
-| Imagen sobre la que trabajamos utilizando la herramienta: _Exif.tools_.
+| 
 
 * Podemos observar que el servidor tiene los puertos abiertos para SSH abiertos:
 	* 222/tcp  open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
