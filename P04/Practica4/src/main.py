@@ -1,5 +1,5 @@
 # Open the input file for reading
-with open('/Users/kary_agarcia/Documents/CyS/SecLists/Passwords/xato-net-10-million-passwords.txt', 'r') as input_file:
+with open('/Users/kary_agarcia/Documents/CyS/SecLists/Passwords/Common-Credentials/', 'r') as input_file:
 
     # Open the output file for writing
     with open('/Users/kary_agarcia/Documents/CyS/out.txt', 'w') as output_file:

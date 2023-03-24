@@ -2,6 +2,7 @@
 
 La práctica se realizó de forma individual debido a que cada integrante del equipo contaba con un usuario y contraseña diferente por lo que se dará la explicación de dos distintos procesos correspondientes a cada integrante.
 
+Usuarios de cada integrante: 317340385 y 315073120
 ## Procedimiento.
 
 ```Pedro Méndez Jose Manuel ```
@@ -522,9 +523,3 @@ seguimos intentando, ahora usando la WordList generada con el código anterior.
 
 ------
 📢⌨️ with ❤️ by [Jose-MPM](https://github.com/Jose-MPM) 😊⌨️ and [Kary-GOD](https://github.com/Kary-AG) 😊⌨️🎁
-
-
-Encontrando los siguientes puertos activos y aceptables para nuestro objetivo:
-
-
- hydra -s 2222 -l 315073120 -P /home/ntory/CyS/p04/mas_palabras.txt 44.199.201.139 -f ssh
