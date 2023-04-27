@@ -6,12 +6,14 @@
 
 ## Banderas
 
-Estas se encuentran en el archivo BanderasTHM.txt
+Las banderas de THM son las siguientes:
 
-* Para las otras banderas:
-	- :pa$$word
-	- ' OR 1=1;--
-	- admin:3845
+
+- Task 5:THM{SQL_INJECTION_3840
+- Task 6:THM{SQL_INJECTION_9581}
+- Task 7:THM{SQL_INJECTION_1093}
+- Task 8:THM{SQL_INJECTION_MASTER}
+
 
 Algunos comandos ocupados para obtener la ultima bandera:
 
@@ -38,6 +40,11 @@ Algunos comandos ocupados para obtener la ultima bandera:
 ### Cuenta que realizo el laboratorio.
 
 Username: [Ntory](https://tryhackme.com/p/Ntory)
+
+
+| ![](img/img1.png)
+|:----------------------:|
+| Imagen del laboratorio
 
 ------
 📢⌨️ with ❤️ by [Jose-MPM](https://github.com/Jose-MPM) 😊⌨️ and [Kary-GOD](https://github.com/Kary-AG) 😊⌨️🎁
