@@ -12,6 +12,6 @@
 
 ## Open on Brave
 
-| ![](img/Tor-relay.png) |
+| ![](img/TOR-relay.png) |
 |:----------------------:|
 | Tor relay 			 |
