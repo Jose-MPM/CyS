@@ -96,7 +96,7 @@ Terminado  *Task 4: Cracking*
 |:----------------------:|
 | 
 
-Empezamos a buscar las banderas con comandos entrndo a shell `dir, pwd, cat`.
+Empezamos a buscar las banderas con comandos entrando a shell `dir, pwd, cat`.
 
 
 *(Las banderas se encuentran en la primera sección)*
@@ -114,5 +114,3 @@ De acuerdo a la investigación, considero que como lo dice el enunciado anterior
 La filtración de EternalBlue por parte de The Shadow Brokers permitió a los ciberdelincuentes aprovecharse de la vulnerabilidad en sistemas operativos Windows y llevar a cabo ataques a gran escala. Si la NSA hubiera revelado la vulnerabilidad y permitido que se parcheara antes de que fuera explotada, se habría reducido significativamente el riesgo de que se produjeran ataques de ransomware como WannaCry.
 
 Es importante que los gobiernos y las agencias de inteligencia consideren los riesgos a largo plazo para la seguridad cibernética en lugar de centrarse solo en los beneficios a corto plazo de mantener las vulnerabilidades en secreto. La colaboración y la transparencia entre los investigadores de seguridad, los proveedores de software y las agencias gubernamentales son fundamentales para proteger los sistemas y datos en línea de manera efectiva.
-
-## Punto Extra
