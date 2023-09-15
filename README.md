@@ -14,5 +14,5 @@
 
 ## Prácticas:
 
-* Práctica 1 - [_OSINT_][P01/]
-* [_Criptología Clásica_][CriptologiaClasica.ipynb]
+* Práctica 1 - [_OSINT_](P01/)
+* [_Criptología Clásica_](CriptologiaClasica.ipynb)
